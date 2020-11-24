@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import os
 import rospy
-from duckietown.dtros import DTROS
+from duckietown.dtros import DTROS, NodeType
 from duckietown_msgs.msg import Twist2DStamped
 
 class MyNode(DTROS):
 
     def __init__(self, node_name):
-        super(MyNode, self).__init__(node_name=node_name)
+        super(MyNode, self).__init__(node_name=node_name, node_type=NodeType.GENERIC)
         self.pub = rospy.Publisher("~car_cmd", Twist2DStamped, queue_size=1)
 
     def run(self):
