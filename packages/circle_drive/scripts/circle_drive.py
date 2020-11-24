@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import rospy
-from duckietown import DTROS
+from duckietown.dtros import DTROS
 from duckietown_msgs.msg import Twist2DStamped
 
 class MyNode(DTROS):
