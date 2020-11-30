@@ -22,7 +22,6 @@ class DontCrushDuckieTaskSolution(TaskSolution):
 
     def solve(self):
         env = self.generated_task['env']
-        target_coordinates = self.generated_task['target_coordinates'][-1]
         #        actions = [[1, 0] for _ in range(42)]
         #        for action in actions:
         #            env.step(action)
@@ -32,10 +31,11 @@ class DontCrushDuckieTaskSolution(TaskSolution):
         img = cv2.cvtColor(np.ascontiguousarray(obs), cv2.COLOR_BGR2RGB)
         print('self.yellowRatio(obs) = ', self.yellowRatio(img))
 
-        while self.yellowRatio(img) < 60.5:
-            obs, reward, done, info = env.step([1, 0])
-            img = cv2.cvtColor(np.ascontiguousarray(obs), cv2.COLOR_BGR2RGB)
-            print('self.yellowRatio(obs) = ', self.yellowRatio(obs))
+        while self.yellowRatio(img) < 6.5:
+            obs, reward, done, info = env.step([0.5, 0])
+            #img = cv2.cvtColor(np.ascontiguousarray(obs), cv2.COLOR_BGR2RGB)
+            img = obs
+            print('self.yellowRatio(obs) = ', self.yellowRatio(img))
             env.render()
 
         for i in range(30):

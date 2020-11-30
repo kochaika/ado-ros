@@ -7,7 +7,7 @@ ARG ICON="cube"
 
 # ==================================================>
 # ==> Do not change the code below this line
-ARG ARCH=arm32v7
+ARG ARCH=amd64
 ARG DISTRO=daffy
 ARG BASE_TAG=${DISTRO}-${ARCH}
 ARG BASE_IMAGE=dt-ros-commons
@@ -53,6 +53,7 @@ RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 # install python3 dependencies
 COPY ./dependencies-py3.txt "${REPO_PATH}/"
 RUN pip3 install --use-feature=2020-resolver -r ${REPO_PATH}/dependencies-py3.txt
+RUN pip3 install torch==1.5.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 
 # copy the source code
 COPY ./packages "${REPO_PATH}/packages"
