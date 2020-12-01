@@ -5,7 +5,7 @@ from duckietown.dtros import DTROS, NodeType
 from duckietown_msgs.msg import Twist2DStamped
 from sensor_msgs.msg import CompressedImage
 from cv_bridge import CvBridge
-from solution.solution import DontCrushDuckieTaskSolution
+from solution.solution import LfChallengeTaskSolution
 import numpy as np
 import cv2
 
@@ -14,7 +14,7 @@ class MyNode(DTROS):
     def __init__(self, node_name):
         super(MyNode, self).__init__(node_name=node_name, node_type=NodeType.GENERIC)
         self.bridge = CvBridge()
-        self.solution = DontCrushDuckieTaskSolution({'env': self})
+        self.solution = LfChallengeTaskSolution({'env': self})
         self.cur_img = None
         self.pub = rospy.Publisher("~car_cmd", Twist2DStamped, queue_size=1)
         self.sub_image = rospy.Subscriber(
