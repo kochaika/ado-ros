@@ -7,7 +7,7 @@ ARG ICON="cube"
 
 # ==================================================>
 # ==> Do not change the code below this line
-ARG ARCH=amd64
+ARG ARCH=arm32v7
 ARG DISTRO=daffy
 ARG BASE_TAG=${DISTRO}-${ARCH}
 ARG BASE_IMAGE=dt-ros-commons
